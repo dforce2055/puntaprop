@@ -1,12 +1,12 @@
 export default defineAppConfig({
   global: {
     picture: {
-      dark: 'https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      light: 'https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'My profile picture'
+      dark: '/logos/logo-puntaprop.png',
+      light: '/logos/logo-puntaprop.png',
+      alt: 'PuntaProp - La Guía del Real Estate de Punta del Este'
     },
-    meetingLink: 'https://cal.com/',
-    email: 'ui-pro@nuxt.com',
+    meetingLink: 'https://www.puntaprop.com/contacto',
+    email: 'info@puntaprop.com',
     available: true
   },
   ui: {
@@ -23,23 +23,33 @@ export default defineAppConfig({
     }
   },
   footer: {
-    credits: `Built with Nuxt UI • © ${new Date().getFullYear()}`,
+    credits: `PuntaProp • La Guía del Real Estate de Punta del Este • © ${new Date().getFullYear()}`,
     colorMode: false,
     links: [{
-      'icon': 'i-simple-icons-discord',
-      'to': 'https://go.nuxt.com/discord',
+      'icon': 'i-simple-icons-facebook',
+      'to': 'https://web.facebook.com/Punta-Prop-710854115953117/?modal=admin_todo_tour',
       'target': '_blank',
-      'aria-label': 'Nuxt on Discord'
+      'aria-label': 'PuntaProp en Facebook'
+    }, {
+      'icon': 'i-simple-icons-instagram',
+      'to': 'https://www.instagram.com/puntaprop/?hl=es-la',
+      'target': '_blank',
+      'aria-label': 'PuntaProp en Instagram'
     }, {
       'icon': 'i-simple-icons-x',
-      'to': 'https://go.nuxt.com/x',
+      'to': 'https://twitter.com/puntaprop',
       'target': '_blank',
-      'aria-label': 'Nuxt on X'
+      'aria-label': 'PuntaProp en X (Twitter)'
     }, {
-      'icon': 'i-simple-icons-github',
-      'to': 'https://github.com/nuxt/ui',
+      'icon': 'i-simple-icons-youtube',
+      'to': 'https://www.youtube.com/channel/UCmq86kvdpni2_d0wZeRWI9A',
       'target': '_blank',
-      'aria-label': 'Nuxt UI on GitHub'
+      'aria-label': 'PuntaProp en YouTube'
+    }, {
+      'icon': 'i-simple-icons-linkedin',
+      'to': 'https://www.linkedin.com/company/puntaprop/?viewAsMember=true',
+      'target': '_blank',
+      'aria-label': 'PuntaProp en LinkedIn'
     }]
   }
 })

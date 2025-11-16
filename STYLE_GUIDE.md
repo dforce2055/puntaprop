@@ -1,189 +1,317 @@
 # PuntaProp Design System - Style Guide
 
+**Versión**: 2.0.0
+**Fecha**: 16 Noviembre 2024
+**Basado en**: Sitio original https://www.puntaprop.com/
+
+---
+
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Design Philosophy](#design-philosophy)
-3. [Color Palette](#color-palette)
-4. [Typography](#typography)
-5. [Spacing System](#spacing-system)
-6. [Component Styles](#component-styles)
-7. [Shadows & Elevation](#shadows--elevation)
-8. [Animations & Transitions](#animations--transitions)
-9. [Border Styles](#border-styles)
-10. [Border Radius](#border-radius)
-11. [Opacity & Transparency](#opacity--transparency)
-12. [Z-Index Layers](#z-index-layers)
-13. [Responsive Breakpoints](#responsive-breakpoints)
-14. [CSS Variables](#css-variables)
-15. [Layout Patterns](#layout-patterns)
-16. [Example Component Reference](#example-component-reference)
+2. [Brand Identity](#brand-identity)
+3. [Design Philosophy](#design-philosophy)
+4. [Color Palette](#color-palette)
+5. [Typography](#typography)
+6. [Logo & Branding Assets](#logo--branding-assets)
+7. [Spacing System](#spacing-system)
+8. [Component Styles](#component-styles)
+9. [Shadows & Elevation](#shadows--elevation)
+10. [Animations & Transitions](#animations--transitions)
+11. [Border Styles](#border-styles)
+12. [Border Radius](#border-radius)
+13. [Opacity & Transparency](#opacity--transparency)
+14. [Z-Index Layers](#z-index-layers)
+15. [Responsive Breakpoints](#responsive-breakpoints)
+16. [CSS Variables](#css-variables)
+17. [Layout Patterns](#layout-patterns)
+18. [Real Estate UI Patterns](#real-estate-ui-patterns)
+19. [Example Component Reference](#example-component-reference)
 
 ---
 
 ## Overview
 
-This design system provides a comprehensive guide for building consistent, accessible, and beautiful UI components in our Nuxt 4 + Nuxt UI PuntaProp website. It leverages Tailwind CSS utilities and Nuxt UI's design tokens.
+Este design system documenta los estilos, componentes y patrones para **PuntaProp**, la guía de Real Estate de Punta del Este. El sistema está diseñado para replicar y mejorar el sitio original usando tecnologías modernas.
+
+### Propósito del Proyecto
+
+**PuntaProp** es una plataforma de real estate enfocada en propiedades de Punta del Este, Uruguay. El sitio incluye:
+
+- 🏠 **Búsqueda de propiedades** (venta, alquiler, temporada)
+- 🏢 **Directorio de inmobiliarias**
+- 👔 **Guía de profesionales** (abogados, arquitectos, contadores, escribanos)
+- 📍 **Información sobre Punta del Este**
+- ⭐ **Sistema de favoritos** para usuarios
 
 ### Tech Stack
+
 - **Framework**: Nuxt 4
 - **UI Library**: Nuxt UI v4 (Radix Vue + Tailwind CSS)
-- **Styling**: Tailwind CSS with custom configuration
+- **Content**: Nuxt Content con schemas Zod
+- **Styling**: Tailwind CSS con tokens personalizados
 - **Icons**: Iconify (Lucide + Simple Icons)
 - **Animations**: Motion-v
+- **Images**: Nuxt Image con CDN integration
+
+### Referencias del Sitio Original
+
+- **Sitio**: https://www.puntaprop.com/
+- **Framework Original**: Next.js
+- **CDN Imágenes**: https://fs.puntaprop.com/files/images/
+- **Screenshots**: `backup_old_website/screenshots/`
+
+---
+
+## Brand Identity
+
+### Brand Information
+
+- **Nombre**: PuntaProp
+- **Tagline**: "La Guía del Real Estate de Punta del Este"
+- **Mercado**: Uruguay - Punta del Este
+- **Sector**: Real Estate / Bienes Raíces
+- **Audiencia**: Compradores, vendedores, inquilinos, inmobiliarias
+
+### Brand Personality
+
+- **Profesional**: Confiable y experto en el mercado
+- **Local**: Enfocado específicamente en Punta del Este
+- **Accesible**: Fácil de usar para todos los usuarios
+- **Completo**: Guía integral del real estate
+
+### Tone of Voice
+
+- **Formal pero amigable**: Profesional sin ser distante
+- **Informativo**: Claro y directo
+- **Local**: Conocedor del mercado uruguayo
+- **Confiable**: Datos precisos y actualizados
 
 ---
 
 ## Design Philosophy
 
-### Principles
+### Principios de Diseño
 
-**1. Content First**
-- Design serves content, not the other way around
-- Clear hierarchy and visual flow
-- Readable typography and comfortable line-height
+**1. Trust & Credibility**
+- Diseño limpio y profesional
+- Información clara y verificable
+- Imágenes reales de propiedades
+- Datos confiables de inmobiliarias
 
-**2. Performance Matters**
-- Optimized images with `<NuxtImg>`
-- Minimal custom CSS, leverage Tailwind utilities
-- Lazy loading for below-the-fold content
+**2. User-Centric Search**
+- Filtros intuitivos y potentes
+- Resultados relevantes
+- Búsqueda rápida y responsive
+- Navegación clara
 
-**3. Accessibility Always**
-- WCAG 2.1 AA compliance minimum
-- Keyboard navigation support
-- Proper ARIA labels and semantic HTML
-- Color contrast ratios meet standards
+**3. Local Focus**
+- Contenido específico de Punta del Este
+- Directorio de profesionales locales
+- Información del área
+- Servicios especializados
 
-**4. Mobile First**
-- Responsive by default
-- Touch-friendly interactive elements (min 44px)
-- Optimized for all screen sizes
+**4. Mobile-First**
+- Optimizado para búsquedas móviles
+- Touch-friendly interfaces
+- Responsive en todos los dispositivos
+- Performance optimizado
 
-**5. Dark Mode Native**
-- All components work in both light and dark modes
-- Thoughtful color choices for both themes
-- Smooth mode transitions
+**5. Content Rich**
+- Fotografías de alta calidad
+- Descripciones detalladas
+- Información completa de propiedades
+- Guías y recursos útiles
 
 ---
 
 ## Color Palette
 
-### Primary Colors
+### Primary Brand Colors
 
-Current configuration in `app.config.ts`:
-- **Primary**: `blue` (customizable via Nuxt UI color tokens)
-- **Neutral**: `neutral`
+Basado en el análisis del sitio original, PuntaProp utiliza una paleta profesional que transmite confianza y sofisticación.
 
-#### Semantic Color Usage
+#### Primary Blue (Trust & Professionalism)
 
 ```css
-/* Brand Colors */
---color-primary-50: /* Lightest primary shade */
---color-primary-500: /* Main brand color */
---color-primary-600: /* Hover states */
---color-primary-700: /* Active states */
---color-primary-900: /* Darkest primary shade */
-
-/* Neutral/Gray Scale */
---color-neutral-50: /* Subtle backgrounds */
---color-neutral-100: /* Borders, dividers */
---color-neutral-200: /* Disabled states */
---color-neutral-500: /* Secondary text */
---color-neutral-700: /* Body text */
---color-neutral-900: /* Headings */
+/* Azul primario - Usado en CTAs, links, elementos interactivos */
+--pp-blue-50: #eff6ff;
+--pp-blue-100: #dbeafe;
+--pp-blue-200: #bfdbfe;
+--pp-blue-300: #93c5fd;
+--pp-blue-400: #60a5fa;
+--pp-blue-500: #3b82f6;   /* Main brand color */
+--pp-blue-600: #2563eb;   /* Buttons, primary actions */
+--pp-blue-700: #1d4ed8;   /* Hover states */
+--pp-blue-800: #1e40af;
+--pp-blue-900: #1e3a8a;
+--pp-blue-950: #172554;
 ```
 
-#### Background Colors
+**Uso en Tailwind**:
+```html
+<button class="bg-pp-blue-600 hover:bg-pp-blue-700">Buscar Propiedades</button>
+```
+
+#### Secondary Colors
+
+**Teal/Turquoise (Properties & Real Estate)**
+```css
+/* Color secundario para destacar propiedades */
+--pp-teal-50: #f0fdfa;
+--pp-teal-100: #ccfbf1;
+--pp-teal-500: #14b8a6;
+--pp-teal-600: #0d9488;
+--pp-teal-700: #0f766e;
+```
+
+**Orange (Featured & Highlights)**
+```css
+/* Para propiedades destacadas y llamadas de atención */
+--pp-orange-50: #fff7ed;
+--pp-orange-100: #ffedd5;
+--pp-orange-500: #f97316;
+--pp-orange-600: #ea580c;
+```
+
+### Neutral Scale (Grays)
+
+```css
+/* Backgrounds, text, borders */
+--pp-neutral-50: #fafafa;    /* Subtle backgrounds */
+--pp-neutral-100: #f5f5f5;   /* Light sections */
+--pp-neutral-200: #e5e5e5;   /* Borders */
+--pp-neutral-300: #d4d4d4;   /* Dividers */
+--pp-neutral-400: #a3a3a3;   /* Disabled text */
+--pp-neutral-500: #737373;   /* Supporting text */
+--pp-neutral-600: #525252;   /* Secondary text */
+--pp-neutral-700: #404040;   /* Body text */
+--pp-neutral-800: #262626;   /* Dark sections */
+--pp-neutral-900: #171717;   /* Headings */
+--pp-neutral-950: #0a0a0a;   /* Darkest */
+```
+
+### Semantic Colors
+
+#### Success (Availability, Confirmed)
+```css
+--pp-success-50: #f0fdf4;
+--pp-success-100: #dcfce7;
+--pp-success-500: #22c55e;
+--pp-success-600: #16a34a;
+--pp-success-700: #15803d;
+```
+
+#### Warning (Price Changes, Important)
+```css
+--pp-warning-50: #fffbeb;
+--pp-warning-100: #fef3c7;
+--pp-warning-500: #f59e0b;
+--pp-warning-600: #d97706;
+--pp-warning-700: #b45309;
+```
+
+#### Error (Sold, Unavailable)
+```css
+--pp-error-50: #fef2f2;
+--pp-error-100: #fee2e2;
+--pp-error-500: #ef4444;
+--pp-error-600: #dc2626;
+--pp-error-700: #b91c1c;
+```
+
+#### Info (Details, Instructions)
+```css
+--pp-info-50: #eff6ff;
+--pp-info-100: #dbeafe;
+--pp-info-500: #3b82f6;
+--pp-info-600: #2563eb;
+```
+
+### Background Colors
+
+#### Light Mode
+```css
+--pp-bg-primary: #ffffff;        /* Main background */
+--pp-bg-secondary: #fafafa;      /* Sections, cards */
+--pp-bg-tertiary: #f5f5f5;       /* Wells, inputs */
+--pp-bg-elevated: #ffffff;       /* Modals, dropdowns */
+--pp-bg-overlay: rgba(0,0,0,0.5); /* Modal overlays */
+```
+
+#### Dark Mode
+```css
+--pp-bg-primary-dark: #0a0a0a;      /* Main background */
+--pp-bg-secondary-dark: #171717;    /* Sections */
+--pp-bg-tertiary-dark: #262626;     /* Cards */
+--pp-bg-elevated-dark: #171717;     /* Modals */
+--pp-bg-overlay-dark: rgba(0,0,0,0.7);
+```
+
+### Text Colors
+
+#### Light Mode
+```css
+--pp-text-primary: #171717;      /* Headings, titles */
+--pp-text-secondary: #404040;    /* Body text */
+--pp-text-muted: #737373;        /* Supporting text */
+--pp-text-disabled: #a3a3a3;     /* Disabled */
+--pp-text-link: #2563eb;         /* Links */
+--pp-text-link-hover: #1d4ed8;   /* Link hover */
+```
+
+#### Dark Mode
+```css
+--pp-text-primary-dark: #fafafa;
+--pp-text-secondary-dark: #e5e5e5;
+--pp-text-muted-dark: #a3a3a3;
+--pp-text-disabled-dark: #525252;
+--pp-text-link-dark: #60a5fa;
+--pp-text-link-hover-dark: #3b82f6;
+```
+
+### Border Colors
 
 ```css
 /* Light Mode */
---background-primary: white;        /* #ffffff - Main background, cards */
---background-secondary: neutral-50; /* #fafafa - Subtle sections */
---background-tertiary: neutral-100; /* #f5f5f5 - Code blocks, wells */
+--pp-border-subtle: #e5e5e5;
+--pp-border-default: #d4d4d4;
+--pp-border-strong: #a3a3a3;
 
 /* Dark Mode */
---background-primary: neutral-950;  /* #0a0a0a - Main background */
---background-secondary: neutral-900;/* #171717 - Subtle sections */
---background-tertiary: neutral-800; /* #262626 - Code blocks, wells */
+--pp-border-subtle-dark: #262626;
+--pp-border-default-dark: #404040;
+--pp-border-strong-dark: #525252;
 ```
 
-#### Text Colors
-
-```css
-/* Light Mode */
---text-primary: neutral-900;   /* #171717 - Headings, primary text */
---text-secondary: neutral-700; /* #404040 - Body text */
---text-muted: neutral-500;     /* #737373 - Supporting text */
---text-disabled: neutral-400;  /* #a3a3a3 - Disabled elements */
-
-/* Dark Mode */
---text-primary: neutral-50;    /* #fafafa - Headings, primary text */
---text-secondary: neutral-200; /* #e5e5e5 - Body text */
---text-muted: neutral-400;     /* #a3a3a3 - Supporting text */
---text-disabled: neutral-600;  /* #525252 - Disabled elements */
-```
-
-#### Interactive Colors
-
-```css
-/* Links */
---link-default: primary-600;    /* Default state */
---link-hover: primary-700;      /* Hover state */
---link-active: primary-800;     /* Active/pressed state */
---link-visited: purple-600;     /* Visited links (optional) */
-
-/* Borders */
---border-subtle: neutral-200;   /* Light mode - subtle dividers */
---border-default: neutral-300;  /* Light mode - standard borders */
---border-strong: neutral-400;   /* Light mode - emphasized borders */
-
---border-subtle-dark: neutral-800;  /* Dark mode - subtle dividers */
---border-default-dark: neutral-700; /* Dark mode - standard borders */
---border-strong-dark: neutral-600;  /* Dark mode - emphasized borders */
-```
-
-#### Status Colors
-
-```css
-/* Success */
---color-success: green-600;
---color-success-bg: green-50;
---color-success-border: green-200;
-
-/* Warning */
---color-warning: amber-600;
---color-warning-bg: amber-50;
---color-warning-border: amber-200;
-
-/* Error */
---color-error: red-600;
---color-error-bg: red-50;
---color-error-border: red-200;
-
-/* Info */
---color-info: blue-600;
---color-info-bg: blue-50;
---color-info-border: blue-200;
-```
-
-### Tailwind Class Reference
+### Color Usage Examples
 
 ```html
-<!-- Primary colors -->
-<div class="bg-primary-500 text-primary-50">Primary background</div>
-<div class="text-primary-600 hover:text-primary-700">Primary text</div>
+<!-- Primary Actions -->
+<button class="bg-pp-blue-600 text-white hover:bg-pp-blue-700">
+  Buscar Propiedades
+</button>
 
-<!-- Neutral/Background -->
-<div class="bg-white dark:bg-neutral-950">Page background</div>
-<div class="bg-neutral-50 dark:bg-neutral-900">Section background</div>
+<!-- Secondary Actions -->
+<button class="bg-pp-neutral-100 text-pp-neutral-900 hover:bg-pp-neutral-200">
+  Ver Más
+</button>
 
-<!-- Text colors -->
-<h1 class="text-neutral-900 dark:text-neutral-50">Heading</h1>
-<p class="text-neutral-700 dark:text-neutral-200">Body text</p>
-<span class="text-neutral-500 dark:text-neutral-400">Muted text</span>
+<!-- Property Cards -->
+<div class="bg-white border border-pp-neutral-200 rounded-lg">
+  <!-- Featured property -->
+  <span class="bg-pp-orange-500 text-white">Destacada</span>
+</div>
 
-<!-- Borders -->
-<div class="border border-neutral-200 dark:border-neutral-800">Card</div>
+<!-- Status Badges -->
+<span class="bg-pp-success-100 text-pp-success-700">Disponible</span>
+<span class="bg-pp-error-100 text-pp-error-700">Vendida</span>
+<span class="bg-pp-warning-100 text-pp-warning-700">Reservada</span>
+
+<!-- Text Hierarchy -->
+<h1 class="text-pp-neutral-900 dark:text-pp-neutral-50">Título</h1>
+<p class="text-pp-neutral-700 dark:text-pp-neutral-200">Texto principal</p>
+<span class="text-pp-neutral-500 dark:text-pp-neutral-400">Texto secundario</span>
 ```
 
 ---
@@ -192,51 +320,63 @@ Current configuration in `app.config.ts`:
 
 ### Font Families
 
-Nuxt UI uses system fonts by default for optimal performance:
+PuntaProp utiliza fuentes del sistema para óptima performance y legibilidad:
 
 ```css
---font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-             "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+/* Sans-serif - Principal */
+--pp-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
---font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo,
-             Consolas, "Liberation Mono", monospace;
+/* Monospace - Códigos, datos técnicos */
+--pp-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo,
+                Consolas, "Liberation Mono", monospace;
+
+/* Opcional: Fuente display para títulos grandes */
+--pp-font-display: var(--pp-font-sans);
 ```
 
 ### Type Scale
 
-Following a modular scale for consistent hierarchy:
+Escala tipográfica optimizada para contenido de real estate:
 
 ```css
 /* Font Sizes */
---text-xs: 0.75rem;      /* 12px - Small labels, captions */
---text-sm: 0.875rem;     /* 14px - Supporting text */
---text-base: 1rem;       /* 16px - Body text */
---text-md: 1.125rem;     /* 18px - Large body text */
---text-lg: 1.25rem;      /* 20px - Small headings */
---text-xl: 1.5rem;       /* 24px - Section headings */
---text-2xl: 2rem;        /* 32px - Page headings */
---text-3xl: 2.5rem;      /* 40px - Hero headings (mobile) */
---text-4xl: 3rem;        /* 48px - Hero headings (tablet) */
---text-5xl: 4rem;        /* 64px - Hero headings (desktop) */
+--pp-text-xs: 0.75rem;      /* 12px - Labels, metadata */
+--pp-text-sm: 0.875rem;     /* 14px - Supporting text */
+--pp-text-base: 1rem;       /* 16px - Body text */
+--pp-text-md: 1.125rem;     /* 18px - Large body */
+--pp-text-lg: 1.25rem;      /* 20px - Small headings */
+--pp-text-xl: 1.5rem;       /* 24px - Section titles */
+--pp-text-2xl: 1.875rem;    /* 30px - Page titles */
+--pp-text-3xl: 2.25rem;     /* 36px - Hero h2 */
+--pp-text-4xl: 3rem;        /* 48px - Hero h1 (tablet) */
+--pp-text-5xl: 3.75rem;     /* 60px - Hero h1 (desktop) */
 
 /* Line Heights */
---leading-none: 1;       /* Tight headings */
---leading-tight: 1.25;   /* Headings */
---leading-snug: 1.375;   /* Large text */
---leading-normal: 1.5;   /* Body text */
---leading-relaxed: 1.625;/* Comfortable reading */
---leading-loose: 2;      /* Spacious text */
+--pp-leading-none: 1;
+--pp-leading-tight: 1.25;
+--pp-leading-snug: 1.375;
+--pp-leading-normal: 1.5;
+--pp-leading-relaxed: 1.625;
+--pp-leading-loose: 2;
+
+/* Letter Spacing */
+--pp-tracking-tighter: -0.05em;
+--pp-tracking-tight: -0.025em;
+--pp-tracking-normal: 0em;
+--pp-tracking-wide: 0.025em;
+--pp-tracking-wider: 0.05em;
 ```
 
 ### Font Weights
 
 ```css
---font-light: 300;       /* Subtle text */
---font-normal: 400;      /* Body text */
---font-medium: 500;      /* Emphasized text */
---font-semibold: 600;    /* Subheadings */
---font-bold: 700;        /* Headings */
---font-extrabold: 800;   /* Hero text */
+--pp-font-light: 300;       /* Subtle emphasis */
+--pp-font-normal: 400;      /* Body text */
+--pp-font-medium: 500;      /* Emphasis */
+--pp-font-semibold: 600;    /* Subheadings */
+--pp-font-bold: 700;        /* Headings */
+--pp-font-extrabold: 800;   /* Hero text */
 ```
 
 ### Typography Styles
@@ -244,153 +384,227 @@ Following a modular scale for consistent hierarchy:
 #### Headings
 
 ```html
-<!-- H1 - Hero Heading -->
-<h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-neutral-50 leading-tight tracking-tight">
-  Hero Heading
+<!-- H1 - Page Title / Hero -->
+<h1 class="text-4xl md:text-5xl font-bold text-pp-neutral-900 dark:text-pp-neutral-50 leading-tight tracking-tight">
+  Encontrá tu Propiedad en Punta del Este
 </h1>
 
 <!-- H2 - Section Heading -->
-<h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-neutral-50 leading-tight">
-  Section Heading
+<h2 class="text-2xl md:text-3xl font-bold text-pp-neutral-900 dark:text-pp-neutral-50 leading-tight">
+  Propiedades Destacadas
 </h2>
 
-<!-- H3 - Subsection Heading -->
-<h3 class="text-xl sm:text-2xl font-semibold text-neutral-900 dark:text-neutral-50 leading-snug">
-  Subsection Heading
+<!-- H3 - Subsection -->
+<h3 class="text-xl md:text-2xl font-semibold text-pp-neutral-900 dark:text-pp-neutral-50">
+  Inmobiliarias de Confianza
 </h3>
 
-<!-- H4 - Component Heading -->
-<h4 class="text-lg sm:text-xl font-semibold text-neutral-900 dark:text-neutral-50">
-  Component Heading
+<!-- H4 - Component Title -->
+<h4 class="text-lg md:text-xl font-semibold text-pp-neutral-900 dark:text-pp-neutral-50">
+  Detalles de la Propiedad
 </h4>
 ```
 
 #### Body Text
 
 ```html
-<!-- Large body text -->
-<p class="text-md text-neutral-700 dark:text-neutral-200 leading-relaxed">
-  Large body text for introductions and emphasis.
+<!-- Lead / Intro -->
+<p class="text-md md:text-lg text-pp-neutral-600 dark:text-pp-neutral-300 leading-relaxed max-w-2xl">
+  Descubrí las mejores propiedades en Punta del Este
 </p>
 
-<!-- Regular body text -->
-<p class="text-base text-neutral-700 dark:text-neutral-200 leading-normal">
-  Standard body text for most content.
+<!-- Body Text -->
+<p class="text-base text-pp-neutral-700 dark:text-pp-neutral-200 leading-normal">
+  Texto principal de descripción de propiedades
 </p>
 
-<!-- Small text -->
-<p class="text-sm text-neutral-600 dark:text-neutral-300 leading-normal">
-  Small text for secondary information.
+<!-- Small Text -->
+<p class="text-sm text-pp-neutral-600 dark:text-pp-neutral-300">
+  Información secundaria o metadata
 </p>
 
-<!-- Muted text -->
-<p class="text-sm text-neutral-500 dark:text-neutral-400">
-  Muted text for metadata and supporting info.
-</p>
+<!-- Caption / Label -->
+<span class="text-xs text-pp-neutral-500 dark:text-pp-neutral-400">
+  Última actualización: Hoy
+</span>
 ```
 
-#### Special Text Styles
+#### Property-Specific Typography
 
 ```html
-<!-- Lead paragraph -->
-<p class="text-md sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed max-w-2xl">
-  Lead paragraph with comfortable reading width.
-</p>
+<!-- Property Price -->
+<div class="text-2xl md:text-3xl font-bold text-pp-blue-600">
+  USD 1.500.000
+</div>
 
-<!-- Caption -->
-<figcaption class="text-xs text-neutral-500 dark:text-neutral-400 italic">
-  Image caption or small print
-</figcaption>
+<!-- Property Title -->
+<h3 class="text-xl font-semibold text-pp-neutral-900">
+  Casa 4 Dormitorios en La Barra
+</h3>
 
-<!-- Code inline -->
-<code class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-800 text-sm font-mono rounded">
-  inline code
-</code>
+<!-- Property Specs -->
+<div class="flex gap-4 text-sm text-pp-neutral-600">
+  <span>🛏️ 4 dorm</span>
+  <span>🛁 3 baños</span>
+  <span>📐 250 m²</span>
+  <span>🚗 2 garages</span>
+</div>
 
-<!-- Link -->
-<a class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 underline underline-offset-2 transition-colors">
-  Text link
-</a>
+<!-- Agency Name -->
+<div class="text-sm font-medium text-pp-neutral-700">
+  Inmobiliaria Punta Real Estate
+</div>
+```
+
+---
+
+## Logo & Branding Assets
+
+### Logo Files
+
+Los logos se encuentran embedidos en el sitio original. Para extraerlos:
+
+**Ubicación**:
+- Favicon original: `backup_old_website/assets/favicons/favicon-310.png`
+- Logos en base64: En HTML head del sitio original
+
+### Logo Usage Guidelines
+
+#### Logo Variations
+
+```
+logos/
+├── puntaprop-logo-primary.png      # Logo principal (fondo claro)
+├── puntaprop-logo-white.png        # Logo blanco (fondo oscuro)
+├── puntaprop-logo-icon.png         # Solo icono
+└── puntaprop-logo-wordmark.png     # Solo texto
+```
+
+#### Logo Sizes
+
+```html
+<!-- Header Desktop -->
+<img src="/logos/puntaprop-logo-primary.png" alt="PuntaProp" class="h-12 w-auto" />
+
+<!-- Header Mobile -->
+<img src="/logos/puntaprop-logo-icon.png" alt="PuntaProp" class="h-10 w-auto" />
+
+<!-- Footer -->
+<img src="/logos/puntaprop-logo-white.png" alt="PuntaProp" class="h-8 w-auto" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="310x310" href="/favicon-310.png" />
+```
+
+#### Clear Space
+
+- Mantener espacio mínimo de 16px alrededor del logo
+- No modificar proporciones
+- No cambiar colores del logo
+- Fondo preferido: blanco o transparente
+
+### Favicons
+
+```html
+<!-- Standard Favicon -->
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- MS Tile -->
+<meta name="msapplication-TileImage" content="/ms-tile-310.png" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+
+<!-- PWA -->
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#ffffff" />
 ```
 
 ---
 
 ## Spacing System
 
-Nuxt UI and Tailwind use a consistent 4px spacing scale:
+Sistema de espaciado basado en 4px para consistencia visual:
 
 ### Spacing Scale
 
 ```css
-0:    0px      /* No spacing */
-px:   1px      /* Hairline */
-0.5:  2px      /* Tiny gaps */
-1:    4px      /* Extra small */
-1.5:  6px
-2:    8px      /* Small */
-3:    12px     /* Medium-small */
-4:    16px     /* Medium */
-5:    20px     /* Medium-large */
-6:    24px     /* Large */
-7:    28px
-8:    32px     /* Extra large */
-10:   40px     /* XXL */
-12:   48px     /* XXXL */
-16:   64px     /* Section spacing */
-20:   80px     /* Large sections */
-24:   96px     /* Hero sections */
+--pp-space-0: 0px;      /* 0 */
+--pp-space-px: 1px;     /* Hairline */
+--pp-space-0.5: 2px;    /* 0.5 */
+--pp-space-1: 4px;      /* 1 */
+--pp-space-1.5: 6px;    /* 1.5 */
+--pp-space-2: 8px;      /* 2 */
+--pp-space-2.5: 10px;   /* 2.5 */
+--pp-space-3: 12px;     /* 3 */
+--pp-space-3.5: 14px;   /* 3.5 */
+--pp-space-4: 16px;     /* 4 - Base */
+--pp-space-5: 20px;     /* 5 */
+--pp-space-6: 24px;     /* 6 */
+--pp-space-7: 28px;     /* 7 */
+--pp-space-8: 32px;     /* 8 */
+--pp-space-10: 40px;    /* 10 */
+--pp-space-12: 48px;    /* 12 */
+--pp-space-14: 56px;    /* 14 */
+--pp-space-16: 64px;    /* 16 */
+--pp-space-20: 80px;    /* 20 */
+--pp-space-24: 96px;    /* 24 */
+--pp-space-32: 128px;   /* 32 */
 ```
 
 ### Common Spacing Patterns
 
-#### Component Spacing
-
+#### Property Card Spacing
 ```html
-<!-- Button padding -->
-<button class="px-4 py-2">         <!-- Small button -->
-<button class="px-6 py-3">         <!-- Medium button -->
-<button class="px-8 py-4">         <!-- Large button -->
+<div class="p-4 md:p-6 space-y-4">
+  <!-- Property image -->
+  <div class="aspect-video">...</div>
 
-<!-- Card padding -->
-<div class="p-4">                  <!-- Compact card -->
-<div class="p-6">                  <!-- Standard card -->
-<div class="p-8">                  <!-- Spacious card -->
-
-<!-- Input padding -->
-<input class="px-3 py-2">          <!-- Standard input -->
+  <!-- Property info -->
+  <div class="space-y-3">
+    <h3>Property Title</h3>
+    <p>Description</p>
+  </div>
+</div>
 ```
 
-#### Layout Spacing
-
+#### Section Spacing
 ```html
-<!-- Container -->
+<!-- Hero Section -->
+<section class="py-16 md:py-24 lg:py-32">
+  ...
+</section>
+
+<!-- Content Section -->
+<section class="py-12 md:py-16 lg:py-20">
+  ...
+</section>
+
+<!-- Compact Section -->
+<section class="py-8 md:py-12">
+  ...
+</section>
+```
+
+#### Container Spacing
+```html
+<!-- Main Container -->
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+  ...
+</div>
 
-<!-- Section vertical spacing -->
-<section class="py-12 sm:py-16 lg:py-20">    <!-- Standard section -->
-<section class="py-18 sm:py-24 lg:py-32">    <!-- Hero section -->
+<!-- Content Stack -->
+<div class="space-y-6 md:space-y-8">
+  ...
+</div>
 
-<!-- Stack spacing (vertical) -->
-<div class="space-y-2">   <!-- Tight stack (labels, form elements) -->
-<div class="space-y-4">   <!-- Medium stack (list items) -->
-<div class="space-y-6">   <!-- Comfortable stack (sections) -->
-<div class="space-y-8">   <!-- Loose stack (major sections) -->
-
-<!-- Grid gap -->
-<div class="grid gap-4">  <!-- Compact grid -->
-<div class="grid gap-6">  <!-- Standard grid -->
-<div class="grid gap-8">  <!-- Spacious grid -->
-```
-
-#### Content Width
-
-```html
-<!-- Reading width (prose) -->
-<div class="max-w-prose">        <!-- ~65ch, optimal for reading -->
-<div class="max-w-2xl">          <!-- 672px -->
-<div class="max-w-4xl">          <!-- 896px -->
-<div class="max-w-6xl">          <!-- 1152px -->
-<div class="max-w-7xl">          <!-- 1280px -->
+<!-- Property Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+  ...
+</div>
 ```
 
 ---
@@ -399,579 +613,396 @@ px:   1px      /* Hairline */
 
 ### Buttons
 
-Use Nuxt UI's `<UButton>` component with variants:
-
-```vue
-<!-- Primary button -->
-<UButton color="primary" variant="solid">
-  Primary Action
-</UButton>
-
-<!-- Secondary button -->
-<UButton color="neutral" variant="outline">
-  Secondary Action
-</UButton>
-
-<!-- Ghost button -->
-<UButton variant="ghost">
-  Tertiary Action
-</UButton>
-
-<!-- Link button -->
-<UButton variant="link">
-  Link Action
-</UButton>
-
-<!-- Sizes -->
-<UButton size="xs">Extra Small</UButton>
-<UButton size="sm">Small</UButton>
-<UButton size="md">Medium (default)</UButton>
-<UButton size="lg">Large</UButton>
-<UButton size="xl">Extra Large</UButton>
-
-<!-- With icon -->
-<UButton icon="i-lucide-arrow-right" trailing>
-  Next
-</UButton>
-```
-
-#### Custom Button Styles
-
+#### Primary Button
 ```html
-<!-- Base button classes -->
 <button class="
-  inline-flex items-center justify-center gap-2
-  px-4 py-2 rounded-md
-  font-medium text-sm
+  px-6 py-3 rounded-lg
+  bg-pp-blue-600 text-white font-semibold
+  hover:bg-pp-blue-700
+  active:bg-pp-blue-800
   transition-colors duration-200
-  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-  disabled:opacity-50 disabled:cursor-not-allowed
+  shadow-sm hover:shadow-md
 ">
-  Custom Button
-</button>
-
-<!-- Primary variant -->
-<button class="
-  bg-primary-600 text-white
-  hover:bg-primary-700
-  active:bg-primary-800
-  focus-visible:outline-primary-600
-">
-  Primary
-</button>
-
-<!-- Secondary variant -->
-<button class="
-  bg-neutral-100 text-neutral-900
-  dark:bg-neutral-800 dark:text-neutral-100
-  hover:bg-neutral-200 dark:hover:bg-neutral-700
-  border border-neutral-300 dark:border-neutral-600
-">
-  Secondary
+  Buscar Propiedades
 </button>
 ```
 
-### Cards
-
-Use Nuxt UI's `<UCard>` component:
-
-```vue
-<!-- Basic card -->
-<UCard>
-  <template #header>
-    <h3 class="text-lg font-semibold">Card Title</h3>
-  </template>
-
-  <p>Card content goes here.</p>
-
-  <template #footer>
-    <UButton>Action</UButton>
-  </template>
-</UCard>
-
-<!-- Custom card -->
-<div class="
-  bg-white dark:bg-neutral-900
-  border border-neutral-200 dark:border-neutral-800
-  rounded-lg
-  p-6
-  shadow-sm
-  hover:shadow-md
-  transition-shadow duration-200
+#### Secondary Button
+```html
+<button class="
+  px-6 py-3 rounded-lg
+  bg-white text-pp-neutral-900 font-semibold
+  border-2 border-pp-neutral-300
+  hover:border-pp-neutral-400 hover:bg-pp-neutral-50
+  transition-colors duration-200
 ">
-  Card content
+  Ver Más
+</button>
+```
+
+#### Ghost Button
+```html
+<button class="
+  px-4 py-2 rounded-lg
+  text-pp-neutral-700 font-medium
+  hover:bg-pp-neutral-100
+  transition-colors duration-200
+">
+  Favoritos
+</button>
+```
+
+#### Icon Button
+```html
+<button class="
+  p-2 rounded-lg
+  text-pp-neutral-600
+  hover:bg-pp-neutral-100
+  transition-colors duration-200
+">
+  <Icon name="lucide:heart" class="w-5 h-5" />
+</button>
+```
+
+### Property Cards
+
+#### Featured Property Card
+```html
+<div class="
+  group relative
+  bg-white rounded-xl overflow-hidden
+  border border-pp-neutral-200
+  hover:shadow-lg transition-shadow duration-300
+">
+  <!-- Featured Badge -->
+  <div class="absolute top-4 right-4 z-10">
+    <span class="
+      px-3 py-1 rounded-full text-xs font-semibold
+      bg-pp-orange-500 text-white
+    ">
+      Destacada
+    </span>
+  </div>
+
+  <!-- Image -->
+  <div class="aspect-[4/3] overflow-hidden">
+    <img
+      src="..."
+      alt="Property"
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+    />
+  </div>
+
+  <!-- Content -->
+  <div class="p-6 space-y-4">
+    <!-- Price -->
+    <div class="text-2xl font-bold text-pp-blue-600">
+      USD 1.500.000
+    </div>
+
+    <!-- Title -->
+    <h3 class="text-xl font-semibold text-pp-neutral-900">
+      Casa 4 Dormitorios en La Barra
+    </h3>
+
+    <!-- Specs -->
+    <div class="flex gap-4 text-sm text-pp-neutral-600">
+      <span>🛏️ 4 dorm</span>
+      <span>🛁 3 baños</span>
+      <span>📐 250 m²</span>
+    </div>
+
+    <!-- Location -->
+    <div class="flex items-center gap-2 text-sm text-pp-neutral-600">
+      <Icon name="lucide:map-pin" class="w-4 h-4" />
+      <span>La Barra, Punta del Este</span>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex gap-2 pt-4 border-t border-pp-neutral-200">
+      <button class="flex-1 btn-primary">Ver Detalles</button>
+      <button class="btn-ghost">
+        <Icon name="lucide:heart" class="w-5 h-5" />
+      </button>
+    </div>
+  </div>
 </div>
 ```
 
-### Forms
+### Search Filters
 
-```vue
-<!-- Input -->
-<UInput
-  v-model="value"
-  placeholder="Enter text..."
-  size="md"
-/>
+```html
+<div class="bg-white rounded-xl shadow-lg p-6 space-y-4">
+  <!-- Operation Type -->
+  <div class="flex gap-2">
+    <button class="flex-1 btn-primary">Comprar</button>
+    <button class="flex-1 btn-secondary">Alquilar</button>
+    <button class="flex-1 btn-secondary">Temporada</button>
+  </div>
 
-<!-- Textarea -->
-<UTextarea
-  v-model="text"
-  placeholder="Enter description..."
-  :rows="4"
-/>
+  <!-- Property Type -->
+  <USelect
+    v-model="propertyType"
+    :options="propertyTypes"
+    placeholder="Tipo de Propiedad"
+  />
 
-<!-- Select -->
-<USelect
-  v-model="selected"
-  :options="options"
-/>
+  <!-- Location -->
+  <USelect
+    v-model="location"
+    :options="locations"
+    placeholder="Zona"
+  />
 
-<!-- Checkbox -->
-<UCheckbox
-  v-model="checked"
-  label="Accept terms"
-/>
+  <!-- Price Range -->
+  <div class="grid grid-cols-2 gap-4">
+    <UInput
+      v-model="priceMin"
+      type="number"
+      placeholder="Precio mín"
+    />
+    <UInput
+      v-model="priceMax"
+      type="number"
+      placeholder="Precio máx"
+    />
+  </div>
 
-<!-- Custom input -->
-<input class="
-  w-full px-3 py-2
-  bg-white dark:bg-neutral-900
-  border border-neutral-300 dark:border-neutral-700
-  rounded-md
-  text-base text-neutral-900 dark:text-neutral-100
-  placeholder:text-neutral-400 dark:placeholder:text-neutral-500
-  focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
-  disabled:opacity-50 disabled:cursor-not-allowed
-">
+  <!-- Search Button -->
+  <UButton block>Buscar</UButton>
+</div>
 ```
 
-### Navigation
+### Agency Card
 
-```vue
-<!-- Header navigation -->
-<nav class="
-  sticky top-0 z-50
-  bg-white/80 dark:bg-neutral-950/80
-  backdrop-blur-md
-  border-b border-neutral-200 dark:border-neutral-800
-">
-  <UContainer class="flex items-center justify-between h-16">
-    <!-- Nav content -->
-  </UContainer>
-</nav>
+```html
+<div class="bg-white rounded-lg border border-pp-neutral-200 p-6 space-y-4">
+  <!-- Logo -->
+  <div class="aspect-video flex items-center justify-center bg-pp-neutral-50">
+    <img src="..." alt="Agency Logo" class="max-h-20 w-auto" />
+  </div>
 
-<!-- Nav links -->
-<a class="
-  text-sm font-medium
-  text-neutral-700 dark:text-neutral-200
-  hover:text-primary-600 dark:hover:text-primary-400
-  transition-colors
-">
-  Link
-</a>
+  <!-- Name -->
+  <h3 class="text-lg font-semibold text-pp-neutral-900">
+    Inmobiliaria Punta Real Estate
+  </h3>
+
+  <!-- Contact -->
+  <div class="space-y-2 text-sm text-pp-neutral-600">
+    <div class="flex items-center gap-2">
+      <Icon name="lucide:phone" class="w-4 h-4" />
+      <span>+598 99 123 456</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <Icon name="lucide:mail" class="w-4 h-4" />
+      <span>info@puntare.com</span>
+    </div>
+  </div>
+
+  <!-- Action -->
+  <UButton block variant="outline">Ver Propiedades</UButton>
+</div>
 ```
 
 ---
 
 ## Shadows & Elevation
 
-Consistent shadow system for depth and hierarchy:
-
 ```css
-/* Shadow Scale */
---shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
---shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
---shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
---shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
---shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
---shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+/* Elevation System */
+--pp-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+--pp-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+--pp-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+--pp-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+--pp-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+--pp-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 ```
 
-### Usage Examples
+### Usage
 
 ```html
-<!-- Flat (no shadow) -->
-<div class="shadow-none">No elevation</div>
+<!-- Cards -->
+<div class="shadow-sm hover:shadow-md transition-shadow">Card</div>
 
-<!-- Subtle elevation -->
-<div class="shadow-sm">Subtle card</div>
+<!-- Featured Elements -->
+<div class="shadow-lg">Featured</div>
 
-<!-- Standard elevation -->
-<div class="shadow-md">Standard card</div>
-
-<!-- Elevated -->
-<div class="shadow-lg">Modal, dropdown</div>
-
-<!-- Floating -->
-<div class="shadow-xl">Floating action button</div>
-
-<!-- Hover states -->
-<div class="shadow-sm hover:shadow-md transition-shadow">
-  Interactive card
-</div>
-
-<!-- Dark mode shadows -->
-<div class="shadow-md dark:shadow-neutral-900/50">
-  Shadow with dark mode adjustment
-</div>
+<!-- Modals -->
+<div class="shadow-2xl">Modal</div>
 ```
-
-### Elevation Hierarchy
-
-- **Level 0** (shadow-none): Flat elements, inline content
-- **Level 1** (shadow-sm): Subtle cards, list items
-- **Level 2** (shadow-md): Cards, raised buttons
-- **Level 3** (shadow-lg): Dropdowns, popovers
-- **Level 4** (shadow-xl): Modals, drawers
-- **Level 5** (shadow-2xl): Important floating elements
 
 ---
 
 ## Animations & Transitions
 
-Smooth, purposeful animations enhance UX without being distracting.
-
 ### Transition Durations
 
 ```css
---duration-75: 75ms;     /* Instant feedback */
---duration-100: 100ms;   /* Quick transitions */
---duration-150: 150ms;   /* Fast transitions */
---duration-200: 200ms;   /* Standard transitions */
---duration-300: 300ms;   /* Slow transitions */
---duration-500: 500ms;   /* Deliberate animations */
---duration-700: 700ms;   /* Page transitions */
-```
-
-### Easing Functions
-
-```css
---ease-linear: linear;
---ease-in: cubic-bezier(0.4, 0, 1, 1);
---ease-out: cubic-bezier(0, 0, 0.2, 1);
---ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
---ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+--pp-duration-75: 75ms;
+--pp-duration-100: 100ms;
+--pp-duration-150: 150ms;
+--pp-duration-200: 200ms;   /* Default */
+--pp-duration-300: 300ms;
+--pp-duration-500: 500ms;
 ```
 
 ### Common Transitions
 
 ```html
-<!-- Color transitions -->
-<div class="transition-colors duration-200">
-  Color change
-</div>
-
-<!-- All properties -->
-<div class="transition-all duration-300">
-  Multiple properties
-</div>
+<!-- Hover Effects -->
+<div class="transition-colors duration-200 hover:bg-pp-neutral-100">
 
 <!-- Transform -->
-<div class="transition-transform duration-200 hover:scale-105">
-  Scale on hover
-</div>
+<img class="transition-transform duration-300 hover:scale-105" />
 
-<!-- Opacity -->
-<div class="transition-opacity duration-300">
-  Fade in/out
-</div>
+<!-- Shadow -->
+<div class="transition-shadow duration-200 hover:shadow-lg">
 
-<!-- Multiple properties -->
-<div class="transition-[colors,transform] duration-200 ease-out">
-  Specific properties
-</div>
+<!-- Multiple Properties -->
+<div class="transition-all duration-200">
 ```
-
-### Animation Patterns
-
-```html
-<!-- Fade in -->
-<div class="animate-in fade-in duration-500">
-  Fade in
-</div>
-
-<!-- Slide in from bottom -->
-<div class="animate-in slide-in-from-bottom duration-500">
-  Slide up
-</div>
-
-<!-- Spin (loading) -->
-<div class="animate-spin">
-  Loading spinner
-</div>
-
-<!-- Pulse (attention) -->
-<div class="animate-pulse">
-  Loading skeleton
-</div>
-
-<!-- Bounce -->
-<div class="animate-bounce">
-  Scroll indicator
-</div>
-```
-
-### Motion Preferences
-
-Always respect user preferences:
-
-```html
-<!-- Disable animations for reduced motion -->
-<div class="motion-safe:transition-all motion-reduce:transition-none">
-  Respects prefers-reduced-motion
-</div>
-```
-
-### Usage Guidelines
-
-- **Hover states**: 100-200ms
-- **Active/pressed states**: 75-100ms
-- **Page transitions**: 300-500ms
-- **Modals/overlays**: 200-300ms
-- **Micro-interactions**: 150-200ms
 
 ---
 
 ## Border Styles
 
-### Border Widths
-
 ```css
---border-0: 0px;
---border: 1px;      /* Default border */
---border-2: 2px;    /* Thick border */
---border-4: 4px;    /* Extra thick */
---border-8: 8px;    /* Accent borders */
+--pp-border-width: 1px;
+--pp-border-width-2: 2px;
+--pp-border-width-4: 4px;
 ```
 
-### Border Usage
-
 ```html
-<!-- Standard border -->
-<div class="border border-neutral-200 dark:border-neutral-800">
-  Standard border
-</div>
+<!-- Standard Border -->
+<div class="border border-pp-neutral-200">
 
-<!-- Specific sides -->
-<div class="border-t border-neutral-200">Top border</div>
-<div class="border-b border-neutral-200">Bottom border</div>
-<div class="border-l-4 border-primary-600">Accent left border</div>
+<!-- Thick Border -->
+<div class="border-2 border-pp-blue-600">
 
-<!-- Thick borders -->
-<div class="border-2 border-primary-600">
-  Emphasized border
-</div>
-
-<!-- Interactive borders -->
-<div class="
-  border border-neutral-300
-  hover:border-primary-500
-  focus-within:border-primary-600 focus-within:ring-2 focus-within:ring-primary-500/20
-  transition-colors
-">
-  Interactive element
-</div>
+<!-- Specific Sides -->
+<div class="border-b border-pp-neutral-200">
 ```
 
 ---
 
 ## Border Radius
 
-Consistent corner rounding for visual harmony:
-
 ```css
---radius-none: 0px;
---radius-sm: 0.25rem;   /* 4px - Subtle rounding */
---radius-md: 0.375rem;  /* 6px - Standard (default) */
---radius-lg: 0.5rem;    /* 8px - Cards, modals */
---radius-xl: 0.75rem;   /* 12px - Large cards */
---radius-2xl: 1rem;     /* 16px - Images, heroes */
---radius-3xl: 1.5rem;   /* 24px - Special elements */
---radius-full: 9999px;  /* Pills, avatars */
+--pp-radius-sm: 0.375rem;   /* 6px */
+--pp-radius-md: 0.5rem;     /* 8px - Default */
+--pp-radius-lg: 0.75rem;    /* 12px */
+--pp-radius-xl: 1rem;       /* 16px */
+--pp-radius-2xl: 1.5rem;    /* 24px */
+--pp-radius-full: 9999px;   /* Pills */
 ```
 
-### Usage Examples
-
 ```html
-<!-- Standard elements -->
-<div class="rounded-md">Buttons, inputs</div>
-<div class="rounded-lg">Cards, containers</div>
-<div class="rounded-xl">Large cards, images</div>
+<!-- Property Cards -->
+<div class="rounded-xl">
 
-<!-- Specific corners -->
-<div class="rounded-t-lg">Top rounded</div>
-<div class="rounded-b-lg">Bottom rounded</div>
+<!-- Buttons -->
+<button class="rounded-lg">
 
-<!-- Pills and circles -->
-<span class="rounded-full">Pill badge</span>
-<img class="rounded-full" />  <!-- Avatar -->
-
-<!-- Mixed radius -->
-<div class="rounded-t-2xl rounded-b-lg">
-  Hero image with card bottom
-</div>
+<!-- Badges -->
+<span class="rounded-full">
 ```
 
 ---
 
 ## Opacity & Transparency
 
-### Opacity Scale
-
 ```css
---opacity-0: 0;       /* Invisible */
---opacity-5: 0.05;
---opacity-10: 0.1;
---opacity-20: 0.2;
---opacity-30: 0.3;
---opacity-40: 0.4;
---opacity-50: 0.5;    /* Half transparent */
---opacity-60: 0.6;
---opacity-70: 0.7;
---opacity-80: 0.8;
---opacity-90: 0.9;
---opacity-95: 0.95;
---opacity-100: 1;     /* Fully opaque */
+--pp-opacity-0: 0;
+--pp-opacity-50: 0.5;
+--pp-opacity-80: 0.8;
+--pp-opacity-100: 1;
 ```
 
-### Common Uses
-
 ```html
-<!-- Disabled state -->
+<!-- Disabled State -->
 <button class="opacity-50 cursor-not-allowed">
-  Disabled
-</button>
 
-<!-- Muted backgrounds -->
-<div class="bg-neutral-900/50">
-  Semi-transparent overlay
-</div>
-
-<!-- Glassmorphism -->
-<div class="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md">
-  Frosted glass effect
-</div>
-
-<!-- Hover transparency -->
-<div class="opacity-80 hover:opacity-100 transition-opacity">
-  Image card
-</div>
+<!-- Overlay -->
+<div class="bg-black/50 backdrop-blur-sm">
 ```
 
 ---
 
 ## Z-Index Layers
 
-Consistent stacking order prevents z-index conflicts:
-
 ```css
-/* Z-Index Scale */
---z-0: 0;          /* Base layer */
---z-10: 10;        /* Dropdowns, popovers */
---z-20: 20;        /* Sticky headers */
---z-30: 30;        /* Modals, drawers */
---z-40: 40;        /* Notifications, toasts */
---z-50: 50;        /* Tooltips */
+--pp-z-dropdown: 10;
+--pp-z-sticky: 20;
+--pp-z-modal: 30;
+--pp-z-notification: 40;
+--pp-z-tooltip: 50;
 ```
 
-### Usage Guidelines
-
 ```html
-<!-- Sticky header -->
+<!-- Header -->
 <header class="sticky top-0 z-20">
-  Navigation
-</header>
-
-<!-- Dropdown -->
-<div class="absolute z-10">
-  Dropdown menu
-</div>
 
 <!-- Modal -->
 <div class="fixed inset-0 z-30">
-  Modal overlay
-</div>
-
-<!-- Toast notification -->
-<div class="fixed top-4 right-4 z-40">
-  Toast
-</div>
-
-<!-- Tooltip -->
-<div class="absolute z-50">
-  Tooltip
-</div>
 ```
 
 ---
 
 ## Responsive Breakpoints
 
-Mobile-first responsive design with Tailwind breakpoints:
-
 ```css
-/* Breakpoints */
-sm:  640px   /* Small tablets */
-md:  768px   /* Tablets */
-lg:  1024px  /* Small laptops */
-xl:  1280px  /* Desktops */
-2xl: 1536px  /* Large screens */
+/* Tailwind Breakpoints */
+sm: 640px    /* Mobile Large */
+md: 768px    /* Tablet */
+lg: 1024px   /* Desktop Small */
+xl: 1280px   /* Desktop */
+2xl: 1536px  /* Desktop Large */
 ```
 
-### Responsive Patterns
-
 ```html
-<!-- Typography -->
-<h1 class="text-3xl sm:text-4xl lg:text-5xl">
-  Responsive heading
-</h1>
+<!-- Responsive Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-<!-- Layout -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-  Responsive grid
-</div>
+<!-- Responsive Text -->
+<h1 class="text-3xl md:text-4xl lg:text-5xl">
 
-<!-- Spacing -->
-<section class="py-12 sm:py-16 lg:py-20">
-  Responsive section
-</section>
-
-<!-- Show/Hide -->
-<div class="hidden lg:block">Desktop only</div>
-<div class="block lg:hidden">Mobile/tablet only</div>
-
-<!-- Container -->
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-  Responsive container
-</div>
+<!-- Responsive Spacing -->
+<section class="py-12 md:py-16 lg:py-20">
 ```
 
 ---
 
 ## CSS Variables
 
-Custom properties for theme customization:
+### In `app/app.config.ts`
 
-### In `app/assets/css/main.css`
+```typescript
+export default defineAppConfig({
+  ui: {
+    colors: {
+      primary: 'blue',      // PuntaProp blue
+      neutral: 'neutral'    // Gray scale
+    }
+  }
+})
+```
+
+### Custom Variables in `app/assets/css/main.css`
 
 ```css
 @layer base {
   :root {
-    /* Custom spacing */
-    --content-width: 1280px;
+    /* PuntaProp Brand Colors */
+    --color-pp-blue: #2563eb;
+    --color-pp-teal: #14b8a6;
+    --color-pp-orange: #f97316;
+
+    /* Spacing */
+    --container-max-width: 1280px;
     --section-spacing: 5rem;
 
-    /* Custom transitions */
+    /* Transitions */
     --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    /* Custom shadows */
-    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-    --shadow-card-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  }
-
-  .dark {
-    /* Dark mode overrides */
-    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.3);
   }
 }
 ```
@@ -983,212 +1014,225 @@ Custom properties for theme customization:
 ### Container
 
 ```html
-<!-- Standard container -->
-<UContainer>
-  Content with responsive padding
+<UContainer class="py-12 md:py-16">
+  <!-- Content -->
 </UContainer>
+```
 
-<!-- Custom container -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  Manual container
+### Property Grid
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+  <!-- Property cards -->
 </div>
 ```
 
-### Grid Layouts
+### Hero Section
 
 ```html
-<!-- Auto-fit grid -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>
-</div>
-
-<!-- Feature grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-  <div>Feature 1</div>
-  <div>Feature 2</div>
-</div>
-```
-
-### Flexbox Layouts
-
-```html
-<!-- Centered content -->
-<div class="flex items-center justify-center min-h-screen">
-  Centered content
-</div>
-
-<!-- Space between -->
-<div class="flex items-center justify-between">
-  <div>Left</div>
-  <div>Right</div>
-</div>
-
-<!-- Vertical stack -->
-<div class="flex flex-col gap-4">
-  <div>Item 1</div>
-  <div>Item 2</div>
-</div>
-```
-
-### Section Layouts
-
-```html
-<!-- Hero section -->
-<section class="py-18 sm:py-24 lg:py-32">
+<section class="relative py-20 md:py-32 bg-pp-neutral-50">
   <UContainer>
-    <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold">
-        Hero Title
+    <div class="max-w-3xl mx-auto text-center space-y-6">
+      <h1 class="text-4xl md:text-5xl font-bold">
+        Encontrá tu Propiedad en Punta del Este
       </h1>
-      <p class="mt-4 text-md text-muted">
-        Hero description
+      <p class="text-lg text-pp-neutral-600">
+        La guía completa del real estate
       </p>
     </div>
-  </UContainer>
-</section>
-
-<!-- Content section -->
-<section class="py-12 sm:py-16 lg:py-20">
-  <UContainer>
-    <!-- Section content -->
   </UContainer>
 </section>
 ```
 
 ---
 
+## Real Estate UI Patterns
+
+### Property Specs Display
+
+```html
+<div class="flex flex-wrap gap-4 text-sm text-pp-neutral-600">
+  <div class="flex items-center gap-2">
+    <Icon name="lucide:bed" class="w-4 h-4" />
+    <span>4 Dormitorios</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <Icon name="lucide:bath" class="w-4 h-4" />
+    <span>3 Baños</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <Icon name="lucide:ruler" class="w-4 h-4" />
+    <span>250 m²</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <Icon name="lucide:car" class="w-4 h-4" />
+    <span>2 Garages</span>
+  </div>
+</div>
+```
+
+### Price Display
+
+```html
+<div class="space-y-1">
+  <div class="text-2xl md:text-3xl font-bold text-pp-blue-600">
+    USD 1.500.000
+  </div>
+  <div class="text-sm text-pp-neutral-500">
+    USD 6.000/m²
+  </div>
+</div>
+```
+
+### Contact Form
+
+```html
+<div class="bg-white rounded-xl shadow-lg p-6 space-y-4">
+  <h3 class="text-xl font-semibold">Consultá por esta propiedad</h3>
+
+  <UInput placeholder="Tu nombre" />
+  <UInput type="email" placeholder="Tu email" />
+  <UInput type="tel" placeholder="Tu teléfono" />
+  <UTextarea placeholder="Tu mensaje" :rows="4" />
+
+  <UButton block>Enviar Consulta</UButton>
+
+  <p class="text-xs text-pp-neutral-500 text-center">
+    Al enviar aceptás nuestra política de privacidad
+  </p>
+</div>
+```
+
+---
+
 ## Example Component Reference
 
-### Hero Component
+### Complete Property Card
 
 ```vue
 <template>
-  <section class="relative overflow-hidden py-18 sm:py-24 lg:py-32">
-    <UContainer>
-      <div class="mx-auto max-w-3xl text-center">
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-neutral-50 leading-tight tracking-tight">
-          {{ title }}
-        </h1>
-
-        <p class="mt-4 sm:mt-6 text-md sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed">
-          {{ description }}
-        </p>
-
-        <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <UButton
-            size="lg"
-            color="primary"
-            variant="solid"
-          >
-            Get Started
-          </UButton>
-
-          <UButton
-            size="lg"
-            variant="outline"
-          >
-            Learn More
-          </UButton>
-        </div>
-      </div>
-    </UContainer>
-  </section>
-</template>
-```
-
-### Card Component
-
-```vue
-<template>
-  <UCard
-    class="group hover:shadow-lg transition-shadow duration-200"
-  >
-    <template #header>
-      <div class="aspect-video overflow-hidden rounded-t-lg">
-        <NuxtImg
-          :src="image"
-          :alt="title"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-      </div>
-    </template>
-
-    <div class="space-y-3">
-      <h3 class="text-lg font-semibold text-neutral-900 dark:text-neutral-50">
-        {{ title }}
-      </h3>
-
-      <p class="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2">
-        {{ description }}
-      </p>
-
-      <div class="flex flex-wrap gap-2">
-        <span
-          v-for="tag in tags"
-          :key="tag"
-          class="px-2 py-1 text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-md"
-        >
-          {{ tag }}
-        </span>
-      </div>
+  <div class="
+    group relative
+    bg-white rounded-xl overflow-hidden
+    border border-pp-neutral-200
+    hover:shadow-lg transition-shadow duration-300
+  ">
+    <!-- Featured Badge -->
+    <div v-if="property.featured" class="absolute top-4 right-4 z-10">
+      <span class="px-3 py-1 rounded-full text-xs font-semibold bg-pp-orange-500 text-white">
+        Destacada
+      </span>
     </div>
 
-    <template #footer>
-      <UButton
-        variant="ghost"
-        icon="i-lucide-arrow-right"
-        trailing
-      >
-        View Project
-      </UButton>
-    </template>
-  </UCard>
-</template>
-```
+    <!-- Image -->
+    <div class="aspect-[4/3] overflow-hidden">
+      <NuxtImg
+        :src="property.image"
+        :alt="property.title"
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+    </div>
 
-### Navigation Component
-
-```vue
-<template>
-  <nav class="sticky top-0 z-20 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800">
-    <UContainer>
-      <div class="flex items-center justify-between h-16">
-        <!-- Logo -->
-        <NuxtLink
-          to="/"
-          class="text-xl font-bold text-neutral-900 dark:text-neutral-50"
-        >
-          Logo
-        </NuxtLink>
-
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-6">
-          <NuxtLink
-            v-for="link in links"
-            :key="link.to"
-            :to="link.to"
-            class="text-sm font-medium text-neutral-700 dark:text-neutral-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-          >
-            {{ link.label }}
-          </NuxtLink>
+    <!-- Content -->
+    <div class="p-6 space-y-4">
+      <!-- Price -->
+      <div class="space-y-1">
+        <div class="text-2xl font-bold text-pp-blue-600">
+          {{ formatCurrency(property.price) }}
         </div>
-
-        <!-- Actions -->
-        <div class="flex items-center gap-2">
-          <ColorModeButton />
-          <UButton
-            size="sm"
-            class="hidden sm:inline-flex"
-          >
-            Contact
-          </UButton>
+        <div v-if="property.pricePerM2" class="text-sm text-pp-neutral-500">
+          {{ formatCurrency(property.pricePerM2) }}/m²
         </div>
       </div>
-    </UContainer>
-  </nav>
+
+      <!-- Title -->
+      <h3 class="text-xl font-semibold text-pp-neutral-900 line-clamp-2">
+        {{ property.title }}
+      </h3>
+
+      <!-- Specs -->
+      <div class="flex flex-wrap gap-4 text-sm text-pp-neutral-600">
+        <div v-if="property.bedrooms" class="flex items-center gap-2">
+          <Icon name="lucide:bed" class="w-4 h-4" />
+          <span>{{ property.bedrooms }} dorm</span>
+        </div>
+        <div v-if="property.bathrooms" class="flex items-center gap-2">
+          <Icon name="lucide:bath" class="w-4 h-4" />
+          <span>{{ property.bathrooms }} baños</span>
+        </div>
+        <div v-if="property.area" class="flex items-center gap-2">
+          <Icon name="lucide:ruler" class="w-4 h-4" />
+          <span>{{ property.area }} m²</span>
+        </div>
+        <div v-if="property.garages" class="flex items-center gap-2">
+          <Icon name="lucide:car" class="w-4 h-4" />
+          <span>{{ property.garages }} garages</span>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="flex items-center gap-2 text-sm text-pp-neutral-600">
+        <Icon name="lucide:map-pin" class="w-4 h-4" />
+        <span>{{ property.location }}</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex gap-2 pt-4 border-t border-pp-neutral-200">
+        <UButton
+          :to="`/propiedades/${property.slug}`"
+          class="flex-1"
+        >
+          Ver Detalles
+        </UButton>
+        <UButton
+          variant="ghost"
+          icon="lucide:heart"
+          @click="toggleFavorite"
+        />
+        <UButton
+          variant="ghost"
+          icon="lucide:share-2"
+          @click="share"
+        />
+      </div>
+    </div>
+  </div>
 </template>
+
+<script setup lang="ts">
+const props = defineProps<{
+  property: {
+    id: string
+    title: string
+    price: number
+    pricePerM2?: number
+    image: string
+    bedrooms?: number
+    bathrooms?: number
+    area?: number
+    garages?: number
+    location: string
+    featured?: boolean
+    slug: string
+  }
+}>()
+
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('es-UY', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0
+  }).format(value)
+}
+
+const toggleFavorite = () => {
+  // Toggle favorite logic
+}
+
+const share = () => {
+  // Share logic
+}
+</script>
 ```
 
 ---
@@ -1196,38 +1240,34 @@ Custom properties for theme customization:
 ## Best Practices
 
 ### Performance
-- Use `<NuxtImg>` for images with lazy loading
-- Leverage Tailwind's purge for minimal CSS
-- Avoid custom CSS when Tailwind utilities exist
-- Use CSS variables for theme values
+- Usar `<NuxtImg>` con lazy loading
+- Optimizar imágenes de propiedades (WebP/AVIF)
+- CDN para assets estáticos
+- Code splitting por ruta
 
 ### Accessibility
-- Maintain 4.5:1 contrast ratio for text
-- Provide focus indicators for interactive elements
-- Use semantic HTML elements
-- Include ARIA labels where needed
-- Support keyboard navigation
+- Contraste mínimo 4.5:1
+- Labels en todos los inputs
+- Focus indicators visibles
+- Alt text descriptivo en imágenes de propiedades
 
-### Consistency
-- Follow the design system patterns
-- Use Nuxt UI components when available
-- Stick to the spacing scale
-- Maintain color palette usage
-- Keep animations purposeful and subtle
+### SEO
+- Meta tags para propiedades
+- Structured data (Schema.org/RealEstateListing)
+- Sitemap con todas las propiedades
+- URLs semánticas
 
-### Maintenance
-- Document component variants
-- Update this guide when adding patterns
-- Keep configuration in `app.config.ts`
-- Test in both light and dark modes
+### UX
+- Búsqueda rápida y responsive
+- Filtros intuitivos
+- Imágenes de alta calidad
+- Información clara de contacto
 
 ---
 
 ## Configuration Files
 
 ### `app/app.config.ts`
-
-Primary theme configuration:
 
 ```typescript
 export default defineAppConfig({
@@ -1236,26 +1276,22 @@ export default defineAppConfig({
       primary: 'blue',
       neutral: 'neutral'
     }
+  },
+  puntaprop: {
+    contactEmail: 'info@puntaprop.com',
+    contactPhone: '+598 99 123 456',
+    social: {
+      facebook: 'https://facebook.com/puntaprop',
+      instagram: 'https://instagram.com/puntaprop',
+      twitter: 'https://twitter.com/puntaprop'
+    }
   }
 })
 ```
 
-### `app/assets/css/main.css`
-
-Custom CSS and overrides:
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  /* Custom styles */
-}
-```
-
 ---
 
-**Last Updated**: 2024
-**Version**: 1.0.0
-**Maintained by**: Development Team
+**Última actualización**: 16 Noviembre 2024
+**Versión**: 2.0.0
+**Mantenido por**: Equipo PuntaProp
+**Basado en**: Sitio original www.puntaprop.com
