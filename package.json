@@ -1,7 +1,12 @@
 {
-  "name": "nuxt-ui-template-portfolio",
+  "name": "puntaprop",
   "private": true,
   "type": "module",
+  "author": {
+    "name": "Nexus Digital",
+    "email": "info@nexusdigital.com"
+  },
+  "version": "1.0.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
