@@ -19,8 +19,8 @@ useHead({
 
 useSeoMeta({
   titleTemplate: '%s - PuntaProp',
-  ogImage: '/public/hero/punta-1.jpg',
-  twitterImage: '/public/hero/punta-1.jpg',
+  ogImage: 'https://puntaprop.vercel.app/hero/punta-1.jpg',
+  twitterImage: 'https://puntaprop.vercel.app/hero/punta-1.jpg',
   twitterCard: 'summary_large_image'
 })
 
