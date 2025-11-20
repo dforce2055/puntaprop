@@ -30,25 +30,27 @@ const colorMode = useColorMode()
         <div class="flex justify-end">
           <div class="flex items-center gap-2 text-xs text-muted">
             <span>Desarrollado por</span>
-            <a
-              href="https://nexusdigital.ar?ref=puntaprop"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center transition-opacity hover:opacity-80"
-            >
-              <img
-                v-if="colorMode.value === 'dark'"
-                src="/logos/nexus_digital_horizontal_white.svg"
-                alt="Nexus Digital"
-                class="h-4 w-auto"
+            <UTooltip text="Somos el nexo entre tu negocio y la tecnología">
+              <a
+                href="https://nexusdigital.ar?ref=puntaprop"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center transition-opacity hover:opacity-80"
               >
-              <img
-                v-else
-                src="/logos/nexus_digital_horizontal_black.svg"
-                alt="Nexus Digital"
-                class="h-4 w-auto"
-              >
-            </a>
+                <img
+                  v-if="colorMode.value === 'dark'"
+                  src="/logos/nexus_digital_horizontal.png"
+                  alt="Nexus Digital"
+                  class="h-4 w-auto"
+                >
+                <img
+                  v-else
+                  src="/logos/nexus_digital_horizontal.png"
+                  alt="Nexus Digital"
+                  class="h-4 w-auto"
+                >
+              </a>
+            </UTooltip>
           </div>
         </div>
       </div>
